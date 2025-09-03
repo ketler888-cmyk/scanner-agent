@@ -1,11 +1,10 @@
-import pandas as pd, numpy as np
-
-def zscore(s: pd.Series, win: int) -> pd.Series:
-    m = s.rolling(win).mean()
-    sd = s.rolling(win).std(ddof=0)
-    return (s - m) / sd.replace(0, np.nan)
-
+# было
 def make_pump_predictors(df: pd.DataFrame, Z_WIN, SQ_WIN, SQ_BB, BREAK_N, VOL_RAMP):
+
+# нужно
+def make_pump_predictors(df: pd.DataFrame, **p):
+    Z_WIN = p["Z_WIN"]; SQ_WIN = p["SQ_WIN"]; SQ_BB = p["SQ_BB"]
+    BREAK_N = p["BREAK_N"]; VOL_RAMP = p["VOL_RAMP"]
     g = df.copy()
     std = g["close"].rolling(SQ_WIN).std(ddof=0)
     g["bb_width"] = (4 * std) / g["close"]
@@ -19,6 +18,3 @@ def make_pump_predictors(df: pd.DataFrame, Z_WIN, SQ_WIN, SQ_BB, BREAK_N, VOL_RA
     prior_max = g["close"].rolling(BREAK_N).max().shift(1)
     g["n_high_breakout"] = g["close"] > prior_max
     return g
-
-def apply_expr(df: pd.DataFrame, expr: str, env: dict) -> pd.Series:
-    return df.eval(expr, local_dict=env).astype(bool)
