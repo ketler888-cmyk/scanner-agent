@@ -1,0 +1,22 @@
+paths:
+  data_dir: "./data"
+  reports_dir: "./reports"
+  log_dir: "./logs"
+  status_json: "./reports/last_status.json"
+  snapshot_txt: "./reports/last_snapshot.txt"
+  pid_file: "./scanner.pid"
+
+market:
+  horizons: [1, 10, 30, 60]
+  pnl_thresh: 0.5
+  winrate_min: 0.3
+
+features:
+  rsi_period: 14
+  fast_sma: 9
+  slow_sma: 21
+  vol_spike_window: 60
+  vol_mult: 2.0
+
+report:
+  interval_min: 20
