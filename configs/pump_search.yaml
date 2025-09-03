@@ -1,0 +1,14 @@
+name: pump_grid
+symbols: []                 # можно оставить пустым, берём все из data/
+expr: "n_high_breakout & (vol_z >= @VOL_Z) & squeeze & near_upper & (fast_sma > slow_sma)"
+pnl_thresh: 0.5
+horizons: [10, 30, 60]
+
+search:
+  VOL_Z: [2.0, 2.5, 3.0, 3.5]
+  BREAK_N: [20, 30, 50]
+  Z_WIN: [30, 60]
+  SQ_WIN: [40, 60, 100]
+  SQ_BB: [0.015, 0.02, 0.03]
+  VOL_RAMP: [1.3, 1.5]
+max_trials: 120
