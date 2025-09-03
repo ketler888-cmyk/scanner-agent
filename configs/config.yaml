@@ -20,3 +20,18 @@ features:
 
 report:
   interval_min: 20
+
+strategy: pump
+pump:
+  entry: breakout
+  z_win: 60
+  vol_z_breakout: 3.0
+  squeeze_win: 60
+  squeeze_bb: 0.02
+  near_upper_lookback: 60
+  near_upper_eps: 0.003
+  vol_ramp_win: 30
+  vol_ramp_ratio: 1.5
+  breakout_n_high: 30
+  pre_score_min: 3
+  pump_ret_1m: 0.02
